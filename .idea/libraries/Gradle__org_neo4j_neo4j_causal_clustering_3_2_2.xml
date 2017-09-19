@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.neo4j:neo4j-causal-clustering:3.2.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.neo4j/neo4j-causal-clustering/3.2.2/20d71414ea4c49eb177e747f1875da17b19ff5d3/neo4j-causal-clustering-3.2.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.neo4j/neo4j-causal-clustering/3.2.2/b64bb8dc29d2c90d80d0abc6bc3375e09c92fc57/neo4j-causal-clustering-3.2.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

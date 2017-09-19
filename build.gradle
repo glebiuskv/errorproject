@@ -1,0 +1,94 @@
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.1'
+    distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+}
+
+buildscript {
+    ext {
+        springBootVersion = '2.0.0.M4'
+    }
+    repositories {
+        //FIXME Нужны не все
+        jcenter()
+        mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+group 'org.javatechs.error-project'
+version '1.0-SNAPSHOT'
+
+project.subprojects { subproject ->
+    buildscript {
+        ext {
+            springBootVersion = '2.0.0.M4'
+            kotlinVersion = '1.1.4-3'
+            dropwizard_metrics_version = '3.1.2'
+            metrics_spring_version = '3.1.2'
+            springCloudVersion = 'Finchley.M1'
+            springDataReleaseTrain = 'Kay-BUILD-SNAPSHOT'
+            springPlatformReleaseTrain = 'Brussels-SR4'
+            propdepsPlugin = '0.0.9.RELEASE'
+            neo4jVersion = '3.2.3'
+            neo4jOgmVersion = '3.0.0-RC1'
+            junitPlatformVersion = '1.0.0-RC3'
+            junitJupiterVersion = '5.0.0-RC3'
+            jjwt_version = '0.7.0'
+        }
+        repositories {
+            jcenter()
+            mavenCentral()
+            maven { url "https://repo.spring.io/snapshot" }
+            maven { url "https://repo.spring.io/milestone" }
+            maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+        }
+        dependencies {
+            classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        }
+    }
+
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'java'
+
+    group 'org.javatechs.errorproject'
+    version '1.0-SNAPSHOT'
+    sourceCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "io.spring.platform:platform-bom:${springPlatformReleaseTrain}"
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+            mavenBom "org.springframework.data:spring-data-releasetrain:${springDataReleaseTrain}"
+            mavenBom "org.springframework.boot:spring-boot-starter-parent:${springBootVersion}"
+        }
+        dependencies {
+            dependencySet(group: 'org.neo4j', version: "${neo4jOgmVersion}") {
+                entry 'neo4j-ogm-bolt-driver'
+                entry 'neo4j-ogm-core'
+                entry 'neo4j-ogm-test'
+            }
+            dependencySet(group: 'org.neo4j', version: "${neo4jVersion}") {
+                entry 'neo4j-kernel'
+                entry 'neo4j-kernel-api'
+                entry 'neo4j'
+            }
+            dependency "org.neo4j.app:neo4j-server:${neo4jVersion}"
+            dependency "org.neo4j.test:neo4j-harness:${neo4jVersion}"
+        }
+    }
+}

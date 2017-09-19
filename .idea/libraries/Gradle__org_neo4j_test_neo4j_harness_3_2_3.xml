@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.neo4j.test:neo4j-harness:3.2.3">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.neo4j.test/neo4j-harness/3.2.3/499b5a31a1dab68da31bc5aedce2f5527da60992/neo4j-harness-3.2.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.neo4j.test/neo4j-harness/3.2.3/8fab7e210d995caf2e4ee77a8d15a0b41847ab06/neo4j-harness-3.2.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
