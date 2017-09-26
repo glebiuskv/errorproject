@@ -5,7 +5,7 @@ task wrapper(type: Wrapper) {
 
 buildscript {
     ext {
-        springBootVersion = '2.0.0.M4'
+        springBootVersion = '2.0.0.BUILD-SNAPSHOT'
     }
     repositories {
         //FIXME Нужны не все
@@ -26,13 +26,13 @@ version '1.0-SNAPSHOT'
 project.subprojects { subproject ->
     buildscript {
         ext {
-            springBootVersion = '2.0.0.M4'
             kotlinVersion = '1.1.4-3'
+            springBootVersion = '2.0.0.BUILD-SNAPSHOT'
+            springDataReleaseTrain = 'Kay-BUILD-SNAPSHOT'
+            springCloudVersion = 'Finchley.BUILD-SNAPSHOT'
+            springPlatformReleaseTrain = 'Brussels-BUILD-SNAPSHOT'
             dropwizard_metrics_version = '3.1.2'
             metrics_spring_version = '3.1.2'
-            springCloudVersion = 'Finchley.M1'
-            springDataReleaseTrain = 'Kay-BUILD-SNAPSHOT'
-            springPlatformReleaseTrain = 'Brussels-SR4'
             propdepsPlugin = '0.0.9.RELEASE'
             neo4jVersion = '3.2.3'
             neo4jOgmVersion = '3.0.0-RC1'
@@ -88,6 +88,8 @@ project.subprojects { subproject ->
                 entry 'neo4j'
             }
             dependency "org.neo4j.app:neo4j-server:${neo4jVersion}"
+            dependency "org.springframework.data:spring-data-commons:${springBootVersion}"
+            dependency "org.springframework.data:spring-data-neo4j:5.0.0.BUILD-SNAPSHOT"
             dependency "org.neo4j.test:neo4j-harness:${neo4jVersion}"
         }
     }
